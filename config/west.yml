@@ -6,6 +6,9 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: carrefinho
       url-base: https://github.com/carrefinho
+    - name: manna-harbour
+      url-base: https://github.com/manna-harbour
+
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -13,5 +16,8 @@ manifest:
     - name: forager-zmk-module
       remote: carrefinho
       revision: main
+    - name: miryoku_zmk
+      remote: manna-harbour
+      revision: master
   self:
     path: config
