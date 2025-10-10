@@ -6,53 +6,14 @@
 #define BASE 0
 #define NUM  1
 #define SYM  2
-#define FUN  3
-#define MSE  4
-#define BT   5
+#define MOD  3
+#define FUN  4
+#define MSE  5
 #define ADJ  6
 
 / {
     behaviors {
-        hm_l: homerow_mods_left {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <175>;
-            require-prior-idle-ms = <100>;
-            flavor = "balanced";
-            bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <5 6 7 8 9 15 16 17 18 19 25 26 27 28 29 30 31 32 33>;
-        };
-        hm_r: homerow_mods_right {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <175>;
-            require-prior-idle-ms = <100>;
-            flavor = "balanced";
-            bindings = <&kp>, <&kp>;
-            hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 30 31 32 33>;
-        };
-        td_shift_caps: tap_dance_shift_caps {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&hm_l LSHFT D>, <&kp CAPS>;
-        };
-        td_shift_caps_r: tap_dance_shift_caps_right {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&hm_r RSHFT K>, <&kp CAPS>;
-        };
         tab_esc: tab_escape {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
-        };
-        spc_ent: space_enter {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping-term-ms = <200>;
@@ -63,21 +24,16 @@
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mkp LCLK>, <&mkp LCLK &mkp LCLK>;
+            bindings = <&mkp LCLK>, <&mkp LCLK>;
         };
-        lt_fast: layer_tap_fast {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <150>;
-            quick-tap-ms = <200>;
-            flavor = "tap-preferred";
-            bindings = <&mo>, <&kp>;
-        };
-
     };
 
     conditional_layers {
         compatible = "zmk,conditional-layers";
+        mouse_layer {
+            if-layers = <MOD FUN>;
+            then-layer = <MSE>;
+        };
         adjust_layer {
             if-layers = <NUM SYM>;
             then-layer = <ADJ>;
@@ -89,28 +45,37 @@
 
         base {
             bindings = <
-            &kp Q           &lt_fast BT W   &kp E           &lt NUM R       &kp T                   &kp Y           &lt SYM U       &kp I           &kp O           &kp P
-            &kp A           &kp S           &kp D           &kp F           &kp G                   &lt FUN H       &hm_r RCTRL J   &td_shift_caps_r &hm_r RALT L   &hm_r RGUI SEMI
-            &kp Z           &kp X           &kp C           &kp V           &kp B                   &kp N           &lt MSE M       &kp COMMA       &kp DOT         &kp FSLH
-                                                            &kp BSPC        &tab_esc ESC TAB        &kp ENTER       &kp SPACE
+            &kp Q           &kp W           &kp E           &kp R           &kp T                   &kp Y           &kp U           &kp I           &kp O           &kp P
+            &kp A           &kp S           &kp D           &kp F           &kp G                   &kp H           &kp J           &kp K           &kp L           &kp SEMI
+            &kp Z           &kp X           &kp C           &kp V           &kp B                   &kp N           &kp M           &kp COMMA       &kp DOT         &kp FSLH
+                                                            &lt NUM BSPC    &lt MOD TAB             &lt SYM ENTER   &lt FUN SPACE
             >;
         };
 
         num {
             bindings = <
             &trans          &trans          &trans          &trans          &trans                  &kp FSLH        &kp N7          &kp N8          &kp N9          &kp STAR
-            &kp LGUI        &kp LALT        &kp LSHFT       &trans          &trans                  &trans          &kp N4          &kp N5          &kp N6          &kp PLUS
+            &trans          &trans          &trans          &trans          &trans                  &trans          &kp N4          &kp N5          &kp N6          &kp PLUS
             &trans          &trans          &trans          &trans          &trans                  &kp COMMA       &kp N1          &kp N2          &kp N3          &kp DOT
-                                                            &trans          &trans                  &spc_ent ENTER SPACE  &kp N0
+                                                            &trans          &trans                  &trans          &kp N0
             >;
         };
 
         sym {
             bindings = <
             &kp LBRC        &kp RBRC        &kp LPAR        &kp RPAR        &kp UNDER               &trans          &trans          &trans          &trans          &kp GRAVE
-            &kp TILDE       &kp EXCL        &kp AT          &kp HASH        &kp DLLR                &trans          &kp RCTRL       &kp RSHFT       &kp RALT        &kp RGUI
+            &kp TILDE       &kp EXCL        &kp AT          &kp HASH        &kp DLLR                &trans          &trans          &trans          &trans          &trans
             &kp CARET       &kp AMPS        &kp STAR        &kp APOS        &kp DQT                 &trans          &trans          &trans          &trans          &trans
                                                             &kp LBKT        &kp RBKT                &trans          &trans
+            >;
+        };
+
+        mod {
+            bindings = <
+            &trans          &trans          &trans          &trans          &trans                  &trans          &trans          &trans          &trans          &trans
+            &sk LGUI        &sk LALT        &sk LSHFT       &sk LCTRL       &trans                  &trans          &trans          &trans          &trans          &trans
+            &trans          &trans          &trans          &trans          &trans                  &trans          &trans          &trans          &trans          &trans
+                                                            &trans          &trans                  &trans          &trans
             >;
         };
 
@@ -132,20 +97,11 @@
             >;
         };
 
-        bt {
-            bindings = <
-            &trans          &trans          &trans          &trans          &trans                  &trans          &trans          &trans          &trans          &bt BT_CLR_ALL
-            &trans          &trans          &trans          &trans          &trans                  &trans          &bt BT_SEL 3    &bt BT_SEL 4    &trans          &trans
-            &trans          &trans          &trans          &trans          &trans                  &trans          &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &trans
-                                                            &trans          &trans                  &trans          &trans
-            >;
-        };
-
         adj {
             bindings = <
-            &studio_unlock  &trans          &trans          &trans          &trans                  &trans          &trans          &trans          &trans          &trans
-            &trans          &trans          &trans          &trans          &trans                  &trans          &trans          &trans          &trans          &trans
-            &trans          &trans          &trans          &trans          &trans                  &trans          &trans          &trans          &trans          &trans
+            &studio_unlock  &trans          &trans          &trans          &trans                  &trans          &trans          &trans          &trans          &bt BT_CLR_ALL
+            &trans          &trans          &trans          &trans          &trans                  &trans          &bt BT_SEL 3    &bt BT_SEL 4    &trans          &trans
+            &trans          &trans          &trans          &trans          &trans                  &trans          &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &trans
                                                             &trans          &trans                  &trans          &trans
             >;
         };
