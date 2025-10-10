@@ -52,19 +52,18 @@
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
-        lbkt_apos: left_bracket_apostrophe {
+        spc_ent: space_enter {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
-        rbkt_quote: right_bracket_quote {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
+        td_lclick_dclick: tap_dance_left_double_click {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
             tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
+            bindings = <&mkp LCLK>, <&mkp LCLK &mkp LCLK>;
         };
     };
 
@@ -81,7 +80,7 @@
 
         base {
             bindings = <
-            &kp Q           &lt BT W        &kp E           &kp T           &lt NUM R               &lt SYM Y       &kp U           &kp I           &kp O           &kp P
+            &kp Q           &lt BT W        &kp E           &kp T           &lt NUM R               &kp Y           &lt SYM U       &kp I           &kp O           &kp P
             &hm_l LGUI A    &hm_l LALT S    &td_shift_caps  &hm_l LCTRL F   &kp G                   &lt FUN H       &hm_r RCTRL J   &td_shift_caps_r &hm_r RALT L   &hm_r RGUI SEMI
             &kp Z           &kp X           &kp C           &kp V           &kp B                   &kp N           &lt MSE M       &kp COMMA       &kp DOT         &kp FSLH
                                                             &kp BSPC        &tab_esc ESC TAB        &kp ENTER       &kp SPACE
@@ -90,26 +89,26 @@
 
         num {
             bindings = <
-            &trans          &kp EQUAL       &kp LBKT        &kp RBKT        &trans                  &kp FSLH        &kp N7          &kp N8          &kp N9          &kp STAR
-            &kp LGUI        &kp LALT        &kp LSHFT       &kp LCTRL       &kp BSLH                &trans          &kp N4          &kp N5          &kp N6          &kp PLUS
-            &trans          &trans          &trans          &trans          &trans                  &kp EQUAL       &kp N1          &kp N2          &kp N3          &kp DOT
-                                                            &trans          &trans                  &kp ENTER       &kp N0
+            &trans          &trans          &trans          &trans          &trans                  &kp FSLH        &kp N7          &kp N8          &kp N9          &kp STAR
+            &kp LGUI        &kp LALT        &kp LSHFT       &trans          &trans                  &trans          &kp N4          &kp N5          &kp N6          &kp PLUS
+            &trans          &trans          &trans          &trans          &trans                  &kp COMMA       &kp N1          &kp N2          &kp N3          &kp DOT
+                                                            &trans          &trans                  &spc_ent ENTER SPACE  &kp N0
             >;
         };
 
         sym {
             bindings = <
-            &kp LBRC        &kp RBRC        &kp LPAR        &kp RPAR        &kp UNDER               &trans          &trans          &trans          &trans          &trans
+            &kp LBRC        &kp RBRC        &kp LPAR        &kp RPAR        &kp UNDER               &trans          &trans          &trans          &trans          &kp GRAVE
             &kp TILDE       &kp EXCL        &kp AT          &kp HASH        &kp DLLR                &trans          &kp RCTRL       &kp RSHFT       &kp RALT        &kp RGUI
-            &kp CARET       &kp AMPS        &kp STAR        &kp MINUS       &kp EQUAL               &trans          &trans          &trans          &trans          &trans
-                                                            &lbkt_apos APOS LBKT  &rbkt_quote DQT RBKT    &trans    &trans
+            &kp CARET       &kp AMPS        &kp STAR        &kp APOS        &kp DQT                 &trans          &trans          &trans          &trans          &trans
+                                                            &kp LBKT        &kp RBKT                &trans          &trans
             >;
         };
 
         fun {
             bindings = <
             &trans          &kp F7          &kp F8          &kp F9          &kp F12                 &trans          &trans          &trans          &trans          &trans
-            &kp LGUI        &kp F4          &kp F5          &kp F6          &kp F11                 &trans          &kp RCTRL       &kp RSHFT       &kp RALT        &kp RGUI
+            &trans          &kp F4          &kp F5          &kp F6          &kp F11                 &trans          &trans          &trans          &trans          &trans
             &trans          &kp F1          &kp F2          &kp F3          &kp F10                 &trans          &trans          &trans          &trans          &trans
                                                             &trans          &trans                  &trans          &trans
             >;
@@ -118,16 +117,16 @@
         mse {
             bindings = <
             &kp K_REDO      &kp K_PASTE     &kp K_COPY      &kp K_CUT       &kp K_UNDO              &trans          &trans          &trans          &trans          &trans
-            &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP    &mmv MOVE_RIGHT &trans                  &trans          &kp RCTRL       &kp RSHFT       &kp RALT        &kp RGUI
+            &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP    &mmv MOVE_RIGHT &trans                  &trans          &trans          &trans          &trans          &trans
             &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP    &msc SCRL_RIGHT &trans                  &trans          &trans          &trans          &trans          &trans
-                                                            &trans          &trans                  &trans          &trans
+                                                            &trans          &trans                  &mkp RCLK       &td_lclick_dclick
             >;
         };
 
         bt {
             bindings = <
             &trans          &trans          &trans          &trans          &trans                  &trans          &trans          &trans          &trans          &bt BT_CLR_ALL
-            &kp LGUI        &kp LALT        &kp LSHFT       &kp LCTRL       &trans                  &trans          &bt BT_SEL 3    &bt BT_SEL 4    &trans          &trans
+            &trans          &trans          &trans          &trans          &trans                  &trans          &bt BT_SEL 3    &bt BT_SEL 4    &trans          &trans
             &trans          &trans          &trans          &trans          &trans                  &trans          &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &trans
                                                             &trans          &trans                  &trans          &trans
             >;
