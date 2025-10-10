@@ -23,6 +23,10 @@
 
     conditional_layers {
         compatible = "zmk,conditional-layers";
+        mouse_layer {
+            if-layers = <NUM FUN>;
+            then-layer = <MSE>;
+        };
         adjust_layer {
             if-layers = <MOD SYM>;
             then-layer = <ADJ>;
