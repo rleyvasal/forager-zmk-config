@@ -55,7 +55,7 @@
         num {
             bindings = <
             &trans          &trans          &trans          &trans          &trans                  &kp FSLH        &kp N7          &kp N8          &kp N9          &kp STAR
-            &trans          &trans          &trans          &trans          &trans                  &trans          &kp N4          &kp N5          &kp N6          &kp PLUS
+            &trans          &trans          &trans          &trans          &trans                  &kp MINUS ’      &kp N4          &kp N5          &kp N6          &kp PLUS
             &trans          &trans          &trans          &trans          &trans                  &kp COMMA       &kp N1          &kp N2          &kp N3          &kp DOT
                                                             &trans          &trans                  &trans          &kp N0
             >;
@@ -97,7 +97,7 @@
             >;
         };
 
-        adj {
+  adj {
             bindings = <
             &studio_unlock  &trans          &trans          &trans          &trans                  &trans          &trans          &trans          &trans          &bt BT_CLR_ALL
             &trans          &trans          &trans          &trans          &trans                  &trans          &bt BT_SEL 3    &bt BT_SEL 4    &trans          &trans
@@ -106,4 +106,10 @@
             >;
         };
     };
+    
+    &sk {
+        release-after-ms = <2000>;
+        quick-release;
+    };
 };
+
