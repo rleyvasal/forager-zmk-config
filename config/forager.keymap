@@ -97,11 +97,11 @@
             &trans          &trans          &trans          &trans          &trans                  &trans          &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &trans
                                                             &trans          &trans                  &trans          &trans
             >;
-        };
-    };
+        };  // end of adj layer
+    };  // end of keymap
     
     &sk {
         release-after-ms = <2000>;
         quick-release;
     };
-};
+};  // end of root
