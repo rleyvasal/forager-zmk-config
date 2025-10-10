@@ -62,7 +62,7 @@
         mod {
             bindings = <
             &trans          &trans          &trans          &trans          &trans                  &trans          &trans          &trans          &trans          &trans
-            &kp LGUI        &kp LALT        &kp LSHFT       &kp LCTRL       &trans                  &trans          &trans          &trans          &trans          &trans
+            &sk LGUI        &sk LALT        &sk LSHFT       &sk LCTRL       &trans                  &trans          &trans          &trans          &trans          &trans
             &trans          &trans          &trans          &trans          &trans                  &trans          &trans          &trans          &trans          &trans
                                                             &trans          &trans                  &trans          &trans
             >;
@@ -95,4 +95,9 @@
             >;
         };
     };
+};
+
+&sk {
+    release-after-ms = <2000>;
+    quick-release;
 };
