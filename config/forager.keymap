@@ -81,7 +81,7 @@
         base {
             bindings = <
             &kp Q           &lt BT W        &kp E           &lt NUM R       &kp T                   &kp Y           &lt SYM U       &kp I           &kp O           &kp P
-            &hm_l LGUI A    &hm_l LALT S    &td_shift_caps  &hm_l LCTRL F   &kp G                   &lt FUN H       &hm_r RCTRL J   &td_shift_caps_r &hm_r RALT L   &hm_r RGUI SEMI
+            &kp A           &kp S           &kp D           &kp F           &kp G                   &lt FUN H       &hm_r RCTRL J   &td_shift_caps_r &hm_r RALT L   &hm_r RGUI SEMI
             &kp Z           &kp X           &kp C           &kp V           &kp B                   &kp N           &lt MSE M       &kp COMMA       &kp DOT         &kp FSLH
                                                             &kp BSPC        &tab_esc ESC TAB        &kp ENTER       &kp SPACE
             >;
