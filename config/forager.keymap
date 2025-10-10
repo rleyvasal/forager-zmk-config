@@ -99,9 +99,4 @@
             >;
         };  // end of adj layer
     };  // end of keymap
-    
-    &sk {
-        release-after-ms = <2000>;
-        quick-release;
-    };
 };  // end of root
