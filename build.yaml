@@ -1,5 +1,5 @@
 include:
   - board: seeeduino_xiao_ble
-    shield: forager_left
+    shield: forager_left miryoku_ferris_left
   - board: seeeduino_xiao_ble
-    shield: forager_right
+    shield: forager_right miryoku_ferris_right
