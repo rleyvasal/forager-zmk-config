@@ -13,13 +13,6 @@
 
 / {
     behaviors {
-        tab_esc: tab_escape {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
-        };
         td_lclick_dclick: tap_dance_left_double_click {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -31,11 +24,11 @@
     conditional_layers {
         compatible = "zmk,conditional-layers";
         mouse_layer {
-            if-layers = <MOD FUN>;
+            if-layers = <NUM FUN>;
             then-layer = <MSE>;
         };
         adjust_layer {
-            if-layers = <NUM SYM>;
+            if-layers = <MOD SYM>;
             then-layer = <ADJ>;
         };
     };
@@ -97,7 +90,7 @@
             >;
         };
 
-  adj {
+        adj {
             bindings = <
             &studio_unlock  &trans          &trans          &trans          &trans                  &trans          &trans          &trans          &trans          &bt BT_CLR_ALL
             &trans          &trans          &trans          &trans          &trans                  &trans          &bt BT_SEL 3    &bt BT_SEL 4    &trans          &trans
@@ -112,4 +105,3 @@
         quick-release;
     };
 };
-
