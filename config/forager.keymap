@@ -23,10 +23,6 @@
 
     conditional_layers {
         compatible = "zmk,conditional-layers";
-        mouse_layer {
-            if-layers = <NUM FUN>;
-            then-layer = <MSE>;
-        };
         adjust_layer {
             if-layers = <MOD SYM>;
             then-layer = <ADJ>;
@@ -40,7 +36,7 @@
             bindings = <
             &kp Q           &kp W           &kp E           &kp R           &kp T                   &kp Y           &kp U           &kp I           &kp O           &kp P
             &kp A           &kp S           &kp D           &kp F           &kp G                   &kp H           &kp J           &kp K           &kp L           &kp SEMI
-            &kp Z           &kp X           &kp C           &kp V           &kp B                   &kp N           &kp M           &kp COMMA       &kp DOT         &kp FSLH
+            &kp Z           &kp X           &kp C           &kp V           &kp B                   &kp N           &lt MSE M       &kp COMMA       &kp DOT         &kp FSLH
                                                             &lt NUM BSPC    &lt MOD TAB             &lt SYM ENTER   &lt FUN SPACE
             >;
         };
@@ -97,6 +93,6 @@
             &trans          &trans          &trans          &trans          &trans                  &trans          &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &trans
                                                             &trans          &trans                  &trans          &trans
             >;
-        };  // end of adj layer
-    };  // end of keymap
-};  // end of root
+        };
+    };
+};
