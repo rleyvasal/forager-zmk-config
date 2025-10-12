@@ -76,12 +76,14 @@
             timeout-ms = <50>;
             key-positions = <12 13>;
             bindings = <&kp LBKT>;
+            layers = <BASE CODE>;  // Active on
         };
         
         combo_rbkt {
             timeout-ms = <50>;
             key-positions = <16 17>;
             bindings = <&kp RBKT>;
+            layers = <BASE CODE>;  // Active on
         };
         
         combo_esc {
@@ -107,7 +109,7 @@
             bindings = <
             &kp LBRC        &kp RBRC        &kp DQT         &td_dl_am DLLR AMPS   &td_bs_pipe BSLH PIPE     &kp FSLH        &kp N7          &kp N8          &kp N9          &kp STAR
             &kp LPAR        &kp RPAR        &kp SQT         &td_us_ex UNDER EXCL  &td_bt_tl GRAVE TILDE     &kp MINUS       &kp N4          &kp N5          &kp N6          &kp PLUS
-            &sk LGUI        &sk LALT        &sk LSHFT       &sk LCTRL             &td_at_hash AT HASH       &td_eq_pct EQUAL PRCNT &kp N1   &kp N2          &kp N3          &kp DOT
+            &sk LGUI        &sk LALT        &sk LSHFT       &sk LCTRL             &td_at_hash HASH AT       &td_eq_pct PRCNT EQUAL &kp N1   &kp N2          &kp N3          &kp DOT
                                                             &trans          &trans          &kp COMMA       &kp N0
             >;
         };
