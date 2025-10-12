@@ -107,8 +107,8 @@
 
         code_layer {
             bindings = <
-            &kp LBRC        &kp RBRC        &kp DQT         &td_dl_am DLLR AMPS   &td_bs_pipe BSLH PIPE     &kp FSLH        &kp N7          &kp N8          &kp N9          &kp STAR
-            &kp LPAR        &kp RPAR        &kp SQT         &td_us_ex UNDER EXCL  &td_bt_tl GRAVE TILDE     &kp MINUS       &kp N4          &kp N5          &kp N6          &kp PLUS
+            &kp LBRC        &kp RBRC        &kp DQT         &td_dl_am AMPS DLLR   &td_bs_pipe PIPE BSLH     &kp FSLH        &kp N7          &kp N8          &kp N9          &kp STAR
+            &kp LPAR        &kp RPAR        &kp SQT         &td_us_ex EXCL UNDER  &td_bt_tl TILDE GRAVE     &kp MINUS       &kp N4          &kp N5          &kp N6          &kp PLUS
             &sk LGUI        &sk LALT        &sk LSHFT       &sk LCTRL             &td_at_hash HASH AT       &td_eq_pct PRCNT EQUAL &kp N1   &kp N2          &kp N3          &kp DOT
                                                             &trans          &trans          &kp COMMA       &kp N0
             >;
