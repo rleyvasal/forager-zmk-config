@@ -4,99 +4,147 @@
 #include <dt-bindings/zmk/mouse.h>
 
 #define BASE 0
-#define NUM  1
-#define SYM  2
-#define MOD  3
-#define FUN  4
-#define MSE  5
-#define ADJ  6
+#define CODE 1
+#define MOD  2
+#define NAV  3
+#define ADJ  4
 
 / {
     behaviors {
-        td_lclick_dclick: tap_dance_left_double_click {
+        // Tap/hold behaviors for symbols
+        td_eq_pct: equal_percent {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+        
+        td_us_ex: underscore_exclamation {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+        
+        td_dl_am: dollar_ampersand {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+        
+        td_at_hash: at_hash {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+        
+        td_bt_tl: backtick_tilde {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+        
+        td_bs_pipe: backslash_pipe {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+        
+        // Tap-dance for Caps Lock
+        td_shift_caps: shift_caps {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mkp LCLK>, <&mkp LCLK>;
+            bindings = <&sk LSHFT>, <&kp CAPS>;
         };
     };
 
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-        mouse_layer {
-            if-layers = <NUM FUN>;
-            then-layer = <MSE>;
+    combos {
+        compatible = "zmk,combos";
+        
+        combo_lbkt {
+            timeout-ms = <50>;
+            key-positions = <12 13>;
+            bindings = <&kp LBKT>;
         };
-        adjust_layer {
-            if-layers = <MOD SYM>;
-            then-layer = <ADJ>;
+        
+        combo_rbkt {
+            timeout-ms = <50>;
+            key-positions = <16 17>;
+            bindings = <&kp RBKT>;
+        };
+        
+        combo_esc {
+            timeout-ms = <50>;
+            key-positions = <0 1>;
+            bindings = <&kp ESC>;
         };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
-        base {
+        base_layer {
             bindings = <
-            &kp Q           &kp W           &kp E           &kp R           &kp T                   &kp Y           &kp U           &kp I           &kp O           &kp P
-            &kp A           &kp S           &kp D           &kp F           &kp G                   &kp H           &kp J           &kp K           &kp L           &kp SEMI
-            &kp Z           &kp X           &kp C           &kp V           &kp B                   &kp N           &lt MSE M       &kp COMMA       &kp DOT         &kp FSLH
-                                                            &lt NUM BSPC    &lt MOD TAB             &lt SYM ENTER   &lt FUN SPACE
+            &kp Q           &kp W           &kp E           &kp R           &kp T           &kp Y           &kp U           &kp I           &kp O           &kp P
+            &kp A           &kp S           &kp D           &kp F           &kp G           &kp H           &kp J           &kp K           &kp L           &kp SEMI
+            &kp Z           &kp X           &kp C           &kp V           &kp B           &kp N           &kp M           &kp COMMA       &kp DOT         &kp FSLH
+                                                            &lt CODE BSPC   &lt MOD TAB     &kp ENTER       &lt NAV SPACE
             >;
         };
 
-        num {
+        code_layer {
             bindings = <
-            &trans          &trans          &trans          &trans          &trans                  &kp FSLH        &kp N7          &kp N8          &kp N9          &kp STAR
-            &trans          &trans          &trans          &trans          &trans                  &kp MINUS       &kp N4          &kp N5          &kp N6          &kp PLUS
-            &trans          &trans          &trans          &trans          &trans                  &kp COMMA       &kp N1          &kp N2          &kp N3          &kp DOT
-                                                            &trans          &trans                  &trans          &kp N0
+            &kp LBRC        &kp RBRC        &kp DQT         &td_dl_am DLLR AMPS   &td_bs_pipe BSLH PIPE     &kp FSLH        &kp N7          &kp N8          &kp N9          &kp STAR
+            &kp LPAR        &kp RPAR        &kp SQT         &td_us_ex UNDER EXCL  &td_bt_tl GRAVE TILDE     &kp MINUS       &kp N4          &kp N5          &kp N6          &kp PLUS
+            &sk LGUI        &sk LALT        &sk LSHFT       &sk LCTRL             &td_at_hash AT HASH       &td_eq_pct EQUAL PRCNT &kp N1   &kp N2          &kp N3          &kp DOT
+                                                            &trans          &trans          &kp COMMA       &kp N0
             >;
         };
 
-        sym {
+        mod_layer {
             bindings = <
-            &kp LBRC        &kp RBRC        &kp LPAR        &kp RPAR        &kp UNDER               &trans          &trans          &trans          &trans          &kp GRAVE
-            &kp TILDE       &kp EXCL        &kp AT          &kp HASH        &kp DLLR                &trans          &trans          &trans          &trans          &trans
-            &kp CARET       &kp AMPS        &kp STAR        &kp APOS        &kp DQT                 &trans          &trans          &trans          &trans          &trans
-                                                            &kp LBKT        &kp RBKT                &trans          &trans
+            &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &kp DEL
+            &sk LGUI        &sk LALT        &td_shift_caps  &sk LCTRL       &trans          &trans          &trans          &trans          &trans          &trans
+            &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
+                                                            &trans          &trans          &trans          &trans
             >;
         };
 
-        mod {
+        nav_layer {
             bindings = <
-            &trans          &trans          &trans          &trans          &trans                  &trans          &trans          &trans          &trans          &trans
-            &sk LGUI        &sk LALT        &sk LSHFT       &sk LCTRL       &trans                  &trans          &trans          &trans          &trans          &trans
-            &trans          &trans          &trans          &trans          &trans                  &trans          &trans          &trans          &trans          &trans
-                                                            &trans          &trans                  &trans          &trans
+            &trans          &msc SCRL_UP    &mmv MOVE_UP    &mkp LCLK       &mkp RCLK       &kp PG_UP       &kp HOME        &kp UP          &kp END         &kp DEL
+            &msc SCRL_LEFT  &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_RIGHT &msc SCRL_RIGHT &kp PG_DN       &kp LEFT        &kp DOWN        &kp RIGHT       &kp INS
+            &trans          &trans          &msc SCRL_DOWN  &trans          &trans          &trans          &trans          &trans          &kp PSCRN       &kp K_UNDO
+                                                            &trans          &trans          &trans          &trans
             >;
         };
 
-        fun {
+        adj_layer {
             bindings = <
-            &trans          &kp F7          &kp F8          &kp F9          &kp F12                 &trans          &trans          &trans          &trans          &trans
-            &trans          &kp F4          &kp F5          &kp F6          &kp F11                 &trans          &trans          &trans          &trans          &trans
-            &trans          &kp F1          &kp F2          &kp F3          &kp F10                 &trans          &trans          &trans          &trans          &trans
-                                                            &trans          &trans                  &trans          &trans
+            &studio_unlock  &kp F7          &kp F8          &kp F9          &kp F12         &trans          &trans          &trans          &trans          &bt BT_CLR_ALL
+            &trans          &kp F4          &kp F5          &kp F6          &kp F11         &trans          &bt BT_SEL 3    &bt BT_SEL 4    &trans          &trans
+            &trans          &kp F1          &kp F2          &kp F3          &kp F10         &trans          &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &bt BT_CLR
+                                                            &trans          &trans          &trans          &trans
             >;
         };
+    };
 
-        mse {
-            bindings = <
-            &trans          &trans          &trans          &trans          &trans                  &trans          &trans          &trans          &trans          &kp K_UNDO
-            &kp LGUI        &kp LALT        &kp LSHFT       &kp LCTRL       &trans                  &td_lclick_dclick &mmv MOVE_LEFT &mmv MOVE_DOWN &mmv MOVE_UP &mmv MOVE_RIGHT
-            &trans          &trans          &trans          &trans          &trans                  &mkp RCLK       &msc SCRL_LEFT  &msc SCRL_DOWN  &msc SCRL_UP    &msc SCRL_RIGHT
-                                                            &trans          &trans                  &trans          &trans
-            >;
-        };
-
-        adj {
-            bindings = <
-            &studio_unlock  &trans          &trans          &trans          &trans                  &trans          &trans          &trans          &trans          &bt BT_CLR_ALL
-            &trans          &trans          &trans          &trans          &trans                  &trans          &bt BT_SEL 3    &bt BT_SEL 4    &trans          &trans
-            &trans          &trans          &trans          &trans          &trans                  &trans          &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &trans
-                                                            &trans          &trans                  &trans          &trans
-            >;
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        tri_layer {
+            if-layers = <MOD NAV>;
+            then-layer = <ADJ>;
         };
     };
 };
