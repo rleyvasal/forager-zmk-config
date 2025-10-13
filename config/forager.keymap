@@ -54,20 +54,6 @@
     combos {
         compatible = "zmk,combos";
         
-        combo_lbkt {
-            timeout-ms = <50>;
-            key-positions = <12 13>;
-            bindings = <&kp LBKT>;
-            layers = <BASE CODE>;
-        };
-        
-        combo_rbkt {
-            timeout-ms = <50>;
-            key-positions = <16 17>;
-            bindings = <&kp RBKT>;
-            layers = <BASE CODE>;
-        };
-        
         combo_esc {
             timeout-ms = <50>;
             key-positions = <0 1>;
@@ -162,7 +148,7 @@
             bindings = <
             &mac_lock       &win_lock       &trans          &trans          &trans          &trans          &trans          &trans          &trans          &kp DEL
             &sk LGUI        &sk LALT        &td_shift_caps  &sk LCTRL       &dictation      &kp MINUS       &trans          &mac_ss4        &trans          &kp PLUS
-            &trans          &trans          &trans          &trans          &trans          &trans          &win_screenshot &trans          &mac_ss3        &trans
+            &trans          &trans          &trans          &trans          &trans          &kp LBKT        &win_screenshot &trans          &mac_ss3        &kp RBKT
                                                             &trans          &trans          &trans          &trans
             >;
         };
