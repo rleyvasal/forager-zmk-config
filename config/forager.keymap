@@ -11,38 +11,6 @@
 
 / {
     behaviors {
-        td_eq_pct: equal_percent {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
-        };
-        
-        td_us_ex: underscore_exclamation {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
-        };
-        
-        td_dl_am: dollar_ampersand {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
-        };
-        
-        td_at_hash: at_hash {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
-        };
-        
         td_bt_tl: backtick_tilde {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -52,6 +20,22 @@
         };
         
         td_bs_pipe: backslash_pipe {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+        
+        td_amp_car: ampersand_caret {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+        
+        td_eq_pct: equal_percent {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping-term-ms = <200>;
@@ -89,6 +73,62 @@
             key-positions = <0 1>;
             bindings = <&kp ESC>;
         };
+        
+        combo_colon {
+            timeout-ms = <50>;
+            key-positions = <17 18>;
+            bindings = <&kp COLON>;
+        };
+    };
+
+    macros {
+        mac_lock: mac_lock_screen {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LGUI &kp LCTRL>
+                     , <&macro_tap &kp Q>
+                     , <&macro_release &kp LGUI &kp LCTRL>;
+        };
+        
+        win_lock: win_lock_screen {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LGUI>
+                     , <&macro_tap &kp L>
+                     , <&macro_release &kp LGUI>;
+        };
+        
+        dictation: dictation_key {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LCTRL>
+                     , <&macro_tap &kp DOT>
+                     , <&macro_release &kp LCTRL>;
+        };
+        
+        win_screenshot: win_screenshot {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LGUI &kp LSHFT>
+                     , <&macro_tap &kp S>
+                     , <&macro_release &kp LGUI &kp LSHFT>;
+        };
+        
+        mac_ss3: mac_screenshot_full {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LGUI &kp LSHFT>
+                     , <&macro_tap &kp N3>
+                     , <&macro_release &kp LGUI &kp LSHFT>;
+        };
+        
+        mac_ss4: mac_screenshot_select {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_press &kp LGUI &kp LSHFT>
+                     , <&macro_tap &kp N4>
+                     , <&macro_release &kp LGUI &kp LSHFT>;
+        };
     };
 
     keymap {
@@ -105,18 +145,18 @@
 
         code_layer {
             bindings = <
-            &kp LBRC        &kp RBRC        &kp DQT         &td_dl_am AMPS DLLR   &td_bs_pipe PIPE BSLH     &kp FSLH        &kp N7          &kp N8          &kp N9          &kp STAR
-            &kp LPAR        &kp RPAR        &kp SQT         &td_us_ex EXCL UNDER  &td_bt_tl TILDE GRAVE     &kp MINUS       &kp N4          &kp N5          &kp N6          &kp PLUS
-            &sk LGUI        &sk LALT        &sk LSHFT       &sk LCTRL             &td_at_hash HASH AT       &td_eq_pct PRCNT EQUAL &kp N1   &kp N2          &kp N3          &kp DOT
+            &td_bt_tl TILDE GRAVE &kp LBRC  &kp RBRC        &kp DQT         &td_bs_pipe PIPE BSLH     &kp FSLH        &kp N7          &kp N8          &kp N9          &kp STAR
+            &kp COLON       &kp LPAR        &kp RPAR        &kp SQT         &kp UNDER       &kp MINUS       &kp N4          &kp N5          &kp N6          &kp PLUS
+            &td_amp_car CARET AMPS &kp AT   &kp HASH        &kp EXCL        &kp DLLR        &td_eq_pct PRCNT EQUAL &kp N1   &kp N2          &kp N3          &kp DOT
                                                             &trans          &trans          &kp COMMA       &kp N0
             >;
         };
 
         mod_layer {
             bindings = <
-            &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &kp DEL
-            &sk LGUI        &sk LALT        &td_shift_caps  &sk LCTRL       &trans          &trans          &trans          &trans          &trans          &trans
-            &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans          &trans
+            &mac_lock       &win_lock       &trans          &trans          &trans          &trans          &trans          &trans          &trans          &kp DEL
+            &sk LGUI        &sk LALT        &td_shift_caps  &sk LCTRL       &dictation      &trans          &mac_ss4        &trans          &trans          &trans
+            &trans          &trans          &trans          &trans          &trans          &trans          &win_screenshot &trans          &mac_ss3        &trans
                                                             &trans          &trans          &trans          &trans
             >;
         };
