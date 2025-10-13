@@ -146,9 +146,9 @@
 
         mod_layer {
             bindings = <
-            &mac_lock       &win_lock       &trans          &trans          &trans          &trans          &trans          &trans          &trans          &kp DEL
-            &sk LGUI        &sk LALT        &td_shift_caps  &sk LCTRL       &dictation      &kp MINUS       &trans          &mac_ss4        &trans          &kp PLUS
-            &trans          &trans          &trans          &trans          &trans          &kp LBKT        &win_screenshot &trans          &mac_ss3        &kp RBKT
+            &mac_lock       &win_lock       &trans          &trans          &trans          &mac_ss3        &mac_ss4        &trans          &trans          &win_screenshot
+            &sk LGUI        &sk LALT        &td_shift_caps  &sk LCTRL       &dictation      &kp BSPC        &kp DEL         &kp SPACE       &kp ENTER       &kp TAB
+            &trans          &trans          &trans          &trans          &trans          &kp LBKT        &kp RBKT        &kp MINUS       &kp PLUS        &trans
                                                             &trans          &trans          &trans          &trans
             >;
         };
