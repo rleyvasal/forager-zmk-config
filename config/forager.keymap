@@ -151,9 +151,9 @@
 
         code_layer {
             bindings = <
-            &td_bt_tl TILDE GRAVE &kp LBRC  &kp RBRC        &kp DQT         &td_bs_pipe PIPE BSLH     &kp FSLH        &kp N7          &kp N8          &kp N9          &kp STAR
+            &td_bt_tl TILDE GRAVE &kp LBRC  &kp RBRC        &kp DQT         &kp DLLR        &kp FSLH        &kp N7          &kp N8          &kp N9          &kp STAR
             &kp COLON       &kp LPAR        &kp RPAR        &kp SQT         &kp UNDER       &kp MINUS       &kp N4          &kp N5          &kp N6          &kp PLUS
-            &td_amp_car CARET AMPS &kp AT   &kp HASH        &kp EXCL        &kp DLLR        &td_eq_pct PRCNT EQUAL &kp N1   &kp N2          &kp N3          &kp DOT
+            &td_amp_car CARET AMPS &td_bs_pipe PIPE BSLH &kp HASH &kp EXCL &kp AT          &td_eq_pct PRCNT EQUAL &kp N1   &kp N2          &kp N3          &kp DOT
                                                             &trans          &trans          &kp COMMA       &kp N0
             >;
         };
