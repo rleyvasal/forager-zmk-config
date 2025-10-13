@@ -79,7 +79,14 @@
             key-positions = <17 18>;
             bindings = <&kp COLON>;
         };
+        
+        combo_enye {
+            timeout-ms = <50>;
+            key-positions = <8 9>;
+            bindings = <&kp RA(N)>;
+        };
     };
+
 
     macros {
         mac_lock: mac_lock_screen {
