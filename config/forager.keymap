@@ -49,6 +49,20 @@
             tapping-term-ms = <200>;
             bindings = <&sk LSHFT>, <&kp CAPS>;
         };
+        
+        td_tab_shift: tab_oneshot_shift {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&lt MOD TAB>, <&sk LSHFT>;
+        };
+        
+        td_enter_ctrl: enter_oneshot_ctrl {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&lt ADJ ENTER>, <&sk LCTRL>;
+        };
     };
 
     combos {
@@ -131,7 +145,7 @@
             &kp Q           &kp W           &kp E           &kp R           &kp T           &kp Y           &kp U           &kp I           &kp O           &kp P
             &kp A           &kp S           &kp D           &kp F           &kp G           &kp H           &kp J           &kp K           &kp L           &kp SEMI
             &kp Z           &kp X           &kp C           &kp V           &kp B           &kp N           &kp M           &kp COMMA       &kp DOT         &kp FSLH
-                                                            &lt CODE BSPC   &lt MOD TAB     &lt ADJ ENTER   &lt NAV SPACE
+                                                            &lt CODE BSPC   &td_tab_shift   &td_enter_ctrl  &lt NAV SPACE
             >;
         };
 
