@@ -154,7 +154,7 @@
         code_layer {
             bindings = <
             &td_bt_tl TILDE GRAVE &kp LBKT          &kp RBKT            &kp DQT             &kp DLLR            &kp FSLH            &kp N7              &kp N8              &kp N9              &kp STAR
-            &kp COLON           &hml LALT LPAR      &hml LSHFT RPAR     &hml LCTRL SQT      &kp UNDER           &kp MINUS           &hmr RCTRL N4       &hmr RSHFT N5       &hmr RALT N6        &kp PLUS
+            &kp COLON           &hml LALT LPAR      &hml LSHFT RPAR     &hml LCTRL SQT      &kp UNDER           &kp MINUS           &hmr RCTRL N4       &hmr RSHFT N5       &hmr RALT N6        &kp KP_PLUS
             &td_amp_car CARET AMPS &td_bs_pipe PIPE BSLH &kp AT        &kp HASH            &kp EXCL            &td_eq_pct PRCNT EQUAL &kp N1           &kp N2              &kp N3              &kp DOT
                                                                         &trans              &trans              &kp COMMA           &kp N0
             >;
