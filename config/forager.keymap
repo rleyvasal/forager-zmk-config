@@ -106,14 +106,6 @@
                      , <&macro_tap &kp L>
                      , <&macro_release &kp LGUI>;
         };
-        
-        show_desktop: show_desktop_mac {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&macro_press &kp LGUI>
-                     , <&macro_tap &kp F3>
-                     , <&macro_release &kp LGUI>;
-        };
     };
 
     keymap {
@@ -150,7 +142,7 @@
             bindings = <
             &mac_lock           &win_lock           &trans              &trans              &trans              &kp C_PREV          &kp C_PP            &kp C_NEXT          &kp C_BRI_UP        &trans
             &kp CAPS            &sk LALT            &sk LSHFT           &sk LCTRL           &trans              &kp BSPC            &kp DEL             &kp SPACE           &kp ENTER           &kp TAB
-            &show_desktop       &trans              &trans              &trans              &trans              &kp C_VOL_DN        &kp C_MUTE          &kp C_VOL_UP        &kp C_BRI_DN        &trans
+            &trans              &trans              &trans              &trans              &trans              &kp C_VOL_DN        &kp C_MUTE          &kp C_VOL_UP        &kp C_BRI_DN        &trans
                                                                         &trans              &trans              &trans              &trans
             >;
         };
