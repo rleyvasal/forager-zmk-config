@@ -75,10 +75,11 @@
             bindings = <&kp ESC>;
         };
         
-        combo_colon {
+        combo_dictation {
             timeout-ms = <50>;
-            key-positions = <17 18>;
-            bindings = <&kp COLON>;
+            key-positions = <26 27>;
+            bindings = <&kp LA(SPACE)>;
+            slow-release;
         };
         
         combo_enye {
@@ -106,36 +107,12 @@
                      , <&macro_release &kp LGUI>;
         };
         
-        dictation: dictation_key {
+        show_desktop: show_desktop_mac {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &kp LCTRL>
-                     , <&macro_tap &kp DOT>
-                     , <&macro_release &kp LCTRL>;
-        };
-        
-        win_screenshot: win_screenshot {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&macro_press &kp LGUI &kp LSHFT>
-                     , <&macro_tap &kp S>
-                     , <&macro_release &kp LGUI &kp LSHFT>;
-        };
-        
-        mac_ss3: mac_screenshot_full {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&macro_press &kp LGUI &kp LSHFT>
-                     , <&macro_tap &kp N3>
-                     , <&macro_release &kp LGUI &kp LSHFT>;
-        };
-        
-        mac_ss4: mac_screenshot_select {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&macro_press &kp LGUI &kp LSHFT>
-                     , <&macro_tap &kp N4>
-                     , <&macro_release &kp LGUI &kp LSHFT>;
+            bindings = <&macro_press &kp LGUI>
+                     , <&macro_tap &kp F3>
+                     , <&macro_release &kp LGUI>;
         };
     };
 
@@ -154,7 +131,7 @@
         code_layer {
             bindings = <
             &td_bt_tl TILDE GRAVE &kp LBKT          &kp RBKT            &kp DQT             &kp DLLR            &kp FSLH            &kp N7              &kp N8              &kp N9              &kp STAR
-            &kp COLON           &hml LALT LPAR      &hml LSHFT RPAR     &hml LCTRL SQT      &kp UNDER           &kp MINUS           &hmr RCTRL N4       &hmr RSHFT N5       &hmr RALT N6        &kp KP_PLUS
+            &kp COLON           &hml LALT LPAR      &hml LSHFT RPAR     &hml LCTRL SQT      &kp UNDER           &kp MINUS           &hmr RCTRL N4       &hmr RSHFT N5       &hmr RALT N6        &kp PLUS
             &td_amp_car CARET AMPS &td_bs_pipe PIPE BSLH &kp AT        &kp HASH            &kp EXCL            &td_eq_pct PRCNT EQUAL &kp N1           &kp N2              &kp N3              &kp DOT
                                                                         &trans              &trans              &kp COMMA           &kp N0
             >;
@@ -171,9 +148,9 @@
 
         mod_layer {
             bindings = <
-            &mac_lock           &win_lock           &trans              &trans              &trans              &mac_ss3            &mac_ss4            &trans              &trans              &win_screenshot
-            &kp CAPS            &sk LALT            &sk LSHFT           &sk LCTRL           &dictation          &kp BSPC            &kp DEL             &kp SPACE           &kp ENTER           &kp TAB
-            &trans              &trans              &trans              &trans              &trans              &kp LBKT            &kp RBKT            &kp MINUS           &kp PLUS            &trans
+            &mac_lock           &win_lock           &trans              &trans              &trans              &kp C_PREV          &kp C_PP            &kp C_NEXT          &kp C_BRI_UP        &trans
+            &kp CAPS            &sk LALT            &sk LSHFT           &sk LCTRL           &trans              &kp BSPC            &kp DEL             &kp SPACE           &kp ENTER           &kp TAB
+            &show_desktop       &trans              &trans              &trans              &trans              &kp C_VOL_DN        &kp C_MUTE          &kp C_VOL_UP        &kp C_BRI_DN        &trans
                                                                         &trans              &trans              &trans              &trans
             >;
         };
